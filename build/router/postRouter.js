@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const postController_1 = require("../controllers/postController");
+const commentController_1 = require("../controllers/commentController");
+const replyController_1 = require("../controllers/replyController");
+const router = express_1.default.Router();
+router.get('/posts', postController_1.getAllPosts);
+router.get('/posts/:postId', postController_1.getPost);
+router.post('/posts/', postController_1.createPost);
+router.patch('/posts/:postId', postController_1.updatePost);
+router.delete('/posts/:postId', postController_1.deletePost);
+router.get('/posts/:postId/comments', commentController_1.getAllComments);
+router.post('/posts/:postId/comments', commentController_1.createComment);
+router.delete('/posts/comments/:commentId', commentController_1.deleteComment);
+router.get('/posts/comments/:commentId/replies', replyController_1.getAllRepliesForThatComment);
+router.post('/posts/comments/:commentId/replies', replyController_1.createReplieToComment);
+router.delete('/posts/comments/replies/:replyId', replyController_1.deleteReply);
+exports.default = router;

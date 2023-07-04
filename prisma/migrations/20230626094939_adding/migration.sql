@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `post` ADD COLUMN `fileType` ENUM('TEXT', 'LINK', 'IMAGE') NOT NULL DEFAULT 'TEXT';
